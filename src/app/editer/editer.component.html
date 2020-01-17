@@ -1,0 +1,31 @@
+<form class="editingForm" [formGroup]="EditZoneGroup">
+  <label>Временная зона</label>
+  <input id="offset" formControlName="offset">
+  <mat-error *ngIf='this.EditZoneGroup.controls["offset"].invalid
+      && (this.EditZoneGroup.controls["offset"].dirty
+      || this.EditZoneGroup.controls["offset"].touched)'>
+      Зона должна начинаться с + или - и иметь число от 0 до 12
+  </mat-error>
+  <label>Название города</label>
+  <input id="cityName" formControlName="cityName">
+  <p *ngIf='this.EditZoneGroup.controls["cityName"].invalid
+      && (this.EditZoneGroup.controls["cityName"].dirty
+    || this.EditZoneGroup.controls["cityName"].touched)'>
+    Название города должно быть длинной меньше 40 символов
+  </p>
+  <div class="buttons">
+    <button routerLink="">
+      Отмена
+    </button>
+    <div *ngIf="this.EditZoneGroup.invalid">
+      <button disabled>
+        Сохранить
+      </button>
+    </div>
+    <div *ngIf="this.EditZoneGroup.valid">
+      <button (click)="updateTimeZone()">
+        Сохранить
+      </button>
+    </div>
+  </div>
+</form>

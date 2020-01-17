@@ -1,22 +1,19 @@
 <form class="editingForm" [formGroup]="EditZoneGroup">
-  <label>Временная зона</label>
-  <input id="offset" formControlName="offset">
-  <mat-error *ngIf='this.EditZoneGroup.controls["offset"].invalid
-      && (this.EditZoneGroup.controls["offset"].dirty
-      || this.EditZoneGroup.controls["offset"].touched)'>
-      Зона должна начинаться с + или - и иметь число от 0 до 12
+  <label>Зона</label>
+  <input id="zone" formControlName="zone">
+  <mat-error *ngIf='this.EditZoneGroup.controls["zone"].invalid
+      && (this.EditZoneGroup.controls["zone"].dirty
+      || this.EditZoneGroup.controls["zone"].touched)'>
+      Напишите + или - а потом число от 0 до 12
   </mat-error>
   <label>Название города</label>
   <input id="cityName" formControlName="cityName">
   <p *ngIf='this.EditZoneGroup.controls["cityName"].invalid
       && (this.EditZoneGroup.controls["cityName"].dirty
     || this.EditZoneGroup.controls["cityName"].touched)'>
-    Название города должно быть длинной меньше 40 символов
+    Напишите меньше символов
   </p>
   <div class="buttons">
-    <button routerLink="">
-      Отмена
-    </button>
     <div *ngIf="this.EditZoneGroup.invalid">
       <button disabled>
         Сохранить
@@ -25,6 +22,9 @@
     <div *ngIf="this.EditZoneGroup.valid">
       <button (click)="updateTimeZone()">
         Сохранить
+      </button>
+      <button routerLink="">
+        Отмена
       </button>
     </div>
   </div>
